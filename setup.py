@@ -1,19 +1,3 @@
-"""
-
-"""
-
-import sys
-import os
-
-from pkg_resources import VersionConflict, require
-
-try:
-    require("setuptools >=42,<70")
-except VersionConflict:
-    print("Error: version of setuptools is too old (<42)!")
-    sys.exit(1)
-
-
 if __name__ == "__main__":
     import skbuild
 
