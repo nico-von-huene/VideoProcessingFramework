@@ -34,7 +34,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-samples = ['pycuda', 'pyopengl', 'torch>2.2,<2.3', 'torchvision>0.16,<0.18', 'opencv-python', 'onnx', 'tensorrt', 'tqdm', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.0+cu123#subdirectory=src/PytorchNvCodec/']
-tests = ['pycuda', 'pyopengl', 'torch>2.2,<2.3', 'torchvision>0.16,<0.18', 'opencv-python', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.0+cu123#subdirectory=src/PytorchNvCodec/']
-torch = ['torch>2.2,<2.3', 'torchvision>0.16,<0.18', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.0+cu123#subdirectory=src/PytorchNvCodec/']
-tensorrt = ['torch>2.2,<2.3', 'torchvision>0.16,<0.18', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.0+cu123#subdirectory=src/PytorchNvCodec/']
+samples = ['pycuda', 'pyopengl', 'torch>2.1,<2.3', 'torchvision>0.16,<0.18', 'opencv-python', 'onnx', 'tensorrt', 'tqdm', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.0+cu123#subdirectory=src/PytorchNvCodec/']
+tests = ['pycuda', 'pyopengl', 'torch>2.1,<2.3', 'torchvision>0.16,<0.18', 'opencv-python', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.0+cu123#subdirectory=src/PytorchNvCodec/']
+torch = ['torch>2.1,<2.3', 'torchvision>0.16,<0.18', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.0+cu123#subdirectory=src/PytorchNvCodec/']
+tensorrt = ['torch>2.1,<2.3', 'torchvision>0.16,<0.18', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.0+cu123#subdirectory=src/PytorchNvCodec/']
