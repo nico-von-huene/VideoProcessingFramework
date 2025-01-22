@@ -14,13 +14,10 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.21)
 
 project(TC_CORE VERSION 1.0.0 LANGUAGES CXX)
 include(GenerateExportHeader)
-
-set(TC_CORE_VERSION_MAJOR 1)
-set(TC_CORE_VERSION_MINOR 0)
 
 configure_file(inc/Version.hpp.in tc_core_version.h)
 

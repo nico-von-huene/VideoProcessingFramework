@@ -27,9 +27,18 @@ COPY setup.py setup.py
 COPY pyproject.toml pyproject.toml
 COPY CMakeLists.txt CMakeLists.txt
 RUN python3 -m pip install --no-cache-dir setuptools wheel
-RUN python3 -m pip install --no-cache-dir .[$PIP_INSTALL_EXTRAS]
-RUN python3 -c "import PytorchNvCodec"
-RUN python3 -m pip wheel --no-cache-dir .[$PIP_INSTALL_EXTRAS]
+RUN ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1
+ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64/stubs/:$LD_LIBRARY_PATH
+RUN if [ -z "${PIP_INSTALL_EXTRAS}" ]; then \
+       	python3 -m pip install -v --no-cache-dir .; \
+    else \
+       	python3 -m pip install -v --no-cache-dir .[$PIP_INSTALL_EXTRAS]; \
+    fi
+RUN python3 -c "import PyNvCodec"
+RUN if [ "${PIP_INSTALL_EXTRAS}" = *"torch"* ]; then \
+		python3 -c "import PytorchNvCodec"; \
+	fi
+# RUN python3 -m pip wheel --no-cache-dir .[$PIP_INSTALL_EXTRAS]
 
 RUN mkdir /cwd
 WORKDIR /cwd

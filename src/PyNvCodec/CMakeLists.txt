@@ -18,10 +18,6 @@ cmake_minimum_required(VERSION 3.21)
 
 project(PyNvCodec VERSION 2.0.0)
 
-set(PYNVCODEC_VERSION_MAJOR 2)
-set(PYNVCODEC_VERSION_MINOR 0)
-set(PYNVCODEC_VERSION_PATCH 0)
-
 if(POLICY CMP0135)
   #  https://cmake.org/cmake/help/latest/policy/CMP0135.html
   # From docs:

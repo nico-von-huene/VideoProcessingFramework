@@ -16,12 +16,7 @@
 #
 cmake_minimum_required(VERSION 3.21)
 
-project(PyNvCodec)
-
-#Do version stuff;
-set (PY_NVCODEC_VERSION_MAJOR 2)
-set (PY_NVCODEC_VERSION_MINOR 0)
-set (PY_NVCODEC_VERSION_PATCH 0)
+project(PyNvCodec VERSION 2.0.0)
 
 set(CMAKE_CXX_STANDARD 17)
 add_subdirectory(src)

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 
-project(Video_Processing_Framework)
+project(Video_Processing_Framework VERSION 2.0.0)
 
 option(TRACK_TOKEN_ALLOCATIONS "Debug memory allocations within VPF" FALSE )
 

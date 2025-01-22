@@ -1,10 +1,12 @@
 if __name__ == "__main__":
     import skbuild
+    import os
 
     PytorchNvCodec = "PytorchNvCodec @ git+https://github.com/nico-von-huene/VideoProcessingFramework.git#subdirectory=src/PytorchNvCodec/"
+    PytorchNvCodec = f"PytorchNvCodec @ file://{os.getcwd()}/src/PytorchNvCodec/"
     skbuild.setup(
         name="PyNvCodec",
-        version="2.0",
+        version="2.0.0",
         description="Video Processing Library with full NVENC/NVDEC hardware acceleration",
         author="NVIDIA",
         license="Apache 2.0",

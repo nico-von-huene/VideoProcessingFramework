@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.21)
 
 # This must be set before enabling CUDA. Otherwise it will be set to the default ARCH by nvcc (e.g. 52 by nvcc 11.7)
 if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
@@ -30,7 +30,7 @@ if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
     )
 endif()
 
-project(TC LANGUAGES CXX CUDA)
+project(TC LANGUAGES CXX CUDA VERSION 2.0.0)
 
 add_subdirectory(TC_CORE)
 
@@ -61,10 +61,6 @@ else()
         src/tc_dlopen_unix.cpp
         )
 endif()
-
-set(TC_VERSION_MAJOR 2)
-set(TC_VERSION_MINOR 0)
-set(TC_VERSION_PATCH 0)
 
 configure_file(inc/Version.hpp.in tc_version.h)
 
