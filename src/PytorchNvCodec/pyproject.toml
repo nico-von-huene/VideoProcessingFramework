@@ -2,8 +2,13 @@
 requires = [
   "setuptools >=42,<72",
   "torch>=2.2.0a0,<2.2.1",
+  "torchvision>=0.17.0a0,<0.17.1",
   "numpy==1.24.4",
+  ## out-comment not install cmake/ninja via pip
+  "cmake>=3.21",
+  "ninja; platform_system!='Windows'",
   "pkgconfig",
+",
 ]
 
 [project]
@@ -19,5 +24,6 @@ classifiers = [
 ]
 dependencies = [
   "torch>=2.2.0a0,<2.2.1",
+  "torchvision>=0.17.0a0,<0.17.1",
   "numpy==1.24.4",
 ]
