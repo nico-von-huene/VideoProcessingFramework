@@ -8,7 +8,7 @@ if __name__ == "__main__":
         description="Video Processing Library with full NVENC/NVDEC hardware acceleration",
         author="NVIDIA",
         license="Apache 2.0",
-        install_requires=["numpy==1.24.4"],
+        install_requires=["numpy==1.24.4", "wheel", "setuptools", "cmake", "scikit-build"],
         extras_require={
             # , "PyOpenGL-accelerate" # does not compile on 3.10
             # "dev": ["pycuda", "pyopengl", "torch", "torchvision", "opencv-python", "onnx", "tensorrt", f"PytorchNvCodec @ file://{os.getcwd()}/src/PytorchNvCodec/"],
