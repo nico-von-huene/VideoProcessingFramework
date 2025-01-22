@@ -6,7 +6,7 @@ if __name__ == "__main__":
 
     setup(
         name="PytorchNvCodec",
-        install_requires=["torch==2.2.0*", "numpy==1.24.4*"],
+        install_requires=["torch==2.2.0", "numpy==1.24.4"],
         ext_modules=[CUDAExtension("_PytorchNvCodec", ["src/PytorchNvCodec.cpp"])],
         packages=["PytorchNvCodec"],
         cmdclass={"build_ext": BuildExtension},
