@@ -14,7 +14,7 @@ if(WIN32)
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif(WIN32)
 
-find_package(CUDAToolkit 11.2 REQUIRED)
+find_package(CUDAToolkit 12.3 REQUIRED)
 
 find_path(
 	TC_FFMPEG_ROOT_HINT

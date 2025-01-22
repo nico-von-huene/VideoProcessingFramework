@@ -16,10 +16,11 @@
 
 cmake_minimum_required(VERSION 3.21)
 
-project(PyNvCodec VERSION 1.0)
+project(PyNvCodec VERSION 2.0.0)
 
-set(PYNVCODEC_VERSION_MAJOR 1)
+set(PYNVCODEC_VERSION_MAJOR 2)
 set(PYNVCODEC_VERSION_MINOR 0)
+set(PYNVCODEC_VERSION_PATCH 0)
 
 if(POLICY CMP0135)
   #  https://cmake.org/cmake/help/latest/policy/CMP0135.html
@@ -31,7 +32,7 @@ endif()
 
 configure_file("inc/Version.hpp.in" "pynvcode_version.h")
 
-find_package(Python3 3.6 REQUIRED COMPONENTS Interpreter Development)
+find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter Development)
 
 option(FETCHCONTENT_QUIET OFF)
 include(FetchContent)

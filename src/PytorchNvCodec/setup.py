@@ -11,6 +11,7 @@ if __name__ == "__main__":
         ext_modules=[CUDAExtension("_PytorchNvCodec", ["src/PytorchNvCodec.cpp"])],
         packages=["PytorchNvCodec"],
         cmdclass={"build_ext": BuildExtension},
-        package_dir={"": "../"},
-        cmake_install_dir="../",
+        package_dir={"": ".."},
+        cmake_install_dir="..",
+        cmake_source_dir="../..",
     )

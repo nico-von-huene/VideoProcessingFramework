@@ -14,7 +14,10 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.21)
+if(SKBUILD)
+  message(STATUS "The project is built using scikit-build")
+endif()
 
 project(PytorchNvCodec)
 
@@ -22,8 +25,9 @@ project(PytorchNvCodec)
 set (src_dir ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 #Do version stuff;
-set (PYTORCH_NVCODEC_VERSION_MAJOR 1)
+set (PYTORCH_NVCODEC_VERSION_MAJOR 2)
 set (PYTORCH_NVCODEC_VERSION_MINOR 0)
+set (PYTORCH_NVCODEC_VERSION_PATCH 0)
 
 #Set up python bindings;
 set(GENERATE_PYTORCH_EXTENSION FALSE CACHE BOOL "Generate VPF Pytorch extension")

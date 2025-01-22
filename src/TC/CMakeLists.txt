@@ -26,7 +26,7 @@ if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
         75
         80
         86
-        #89 # Require CUDA 11.8 for CC 89 or cmake 3.23 for CMAKE_CUDA_ARCHITECTURES_{ALL,ALL_MAJOR}
+        89 # Require CUDA 11.8 for CC 89 or cmake 3.23 for CMAKE_CUDA_ARCHITECTURES_{ALL,ALL_MAJOR}
     )
 endif()
 
@@ -34,7 +34,7 @@ project(TC LANGUAGES CXX CUDA)
 
 add_subdirectory(TC_CORE)
 
-find_package(CUDAToolkit 11.2 REQUIRED)
+find_package(CUDAToolkit 12.3 REQUIRED)
 include(GenerateExportHeader)
 
 add_library(
@@ -62,8 +62,9 @@ else()
         )
 endif()
 
-set(TC_VERSION_MAJOR 1)
+set(TC_VERSION_MAJOR 2)
 set(TC_VERSION_MINOR 0)
+set(TC_VERSION_PATCH 0)
 
 configure_file(inc/Version.hpp.in tc_version.h)
 
@@ -128,17 +129,17 @@ if(PKG_CONFIG_FOUND AND (NOT WIN32)) # pkgconfig works on Windows, but can not h
         REQUIRED
         IMPORTED_TARGET
         # versions taken from CI 22.04
-        #libavfilter>=7.110.100
-        #libavformat>=58.76.100
-        #libavcodec>=58.134.100
-        #libswresample>=3.9.100
-        #libavutil>=56.70.100
+        libavfilter>=7.110.100
+        libavformat>=58.76.100
+        libavcodec>=58.134.100
+        libswresample>=3.9.100
+        libavutil>=56.70.100
         # versions taken from CI. Ubuntu 20.04 system packages
-        libavfilter>=7.57.100
-        libavformat>=58.29.100
-        libavcodec>=58.54.100
-        libswresample>=3.5.100
-        libavutil>=56.31.100
+		#libavfilter>=7.57.100
+		#libavformat>=58.29.100
+		#libavcodec>=58.54.100
+		#libswresample>=3.5.100
+		#libavutil>=56.31.100
     )
     target_link_libraries(TC_CORE PUBLIC PkgConfig::LIBAV)
     try_compile(HAS_BSF ${PROJECT_BINARY_DIR} SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/has_bsf_compile_test.c LINK_LIBRARIES PkgConfig::LIBAV)
