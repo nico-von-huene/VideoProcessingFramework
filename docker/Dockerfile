@@ -28,7 +28,8 @@ COPY pyproject.toml pyproject.toml
 COPY CMakeLists.txt CMakeLists.txt
 RUN python3 -m pip install --no-cache-dir setuptools wheel
 RUN python3 -m pip install --no-cache-dir .[$PIP_INSTALL_EXTRAS]
-RUN python3 -c "import PytorchNvCodec" 
+RUN python3 -c "import PytorchNvCodec"
+RUN python3 -m pip wheel --no-cache-dir .[$PIP_INSTALL_EXTRAS]
 
 RUN mkdir /cwd
 WORKDIR /cwd

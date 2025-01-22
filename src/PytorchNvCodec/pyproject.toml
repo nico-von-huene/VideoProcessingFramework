@@ -8,8 +8,9 @@ requires = [
   "cmake>=3.21",
   "ninja; platform_system!='Windows'",
   "pkgconfig",
+  "scikit-build>=0.13",
 ]
-
+build-backend = "setuptools.build_meta"
 [project]
 name = "PytorchNvCodec"
 version = "2.0.0"
