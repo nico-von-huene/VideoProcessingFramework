@@ -8,7 +8,6 @@ requires = [
   "cmake>=3.21",
   "ninja; platform_system!='Windows'",
   "pkgconfig",
-",
 ]
 
 [project]
