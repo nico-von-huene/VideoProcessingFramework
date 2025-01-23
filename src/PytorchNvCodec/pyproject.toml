@@ -1,8 +1,8 @@
 [build-system]        
 requires = [
   "setuptools >=42,<72",
-  "torch>=2.2.0a0,<2.2.1",
-  "torchvision>=0.17.0a0,<0.17.1",
+  "torch==2.2.2",
+  "torchvision==0.17.2",
   "numpy==1.24.4",
   ## out-comment not install cmake/ninja via pip
   "cmake>=3.21",
@@ -19,11 +19,11 @@ description = """VPF stands for Video Processing Framework. It’s set of C++ li
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
 classifiers = [
-    "Environment :: GPU :: NVIDIA CUDA :: 12.3",
+    "Environment :: GPU :: NVIDIA CUDA :: 12.1",
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-  "torch>=2.2.0a0,<2.2.1",
-  "torchvision>=0.17.0a0,<0.17.1",
+  "torch==2.2.2",
+  "torchvision==0.17.2",
   "numpy==1.24.4",
 ]

@@ -25,7 +25,7 @@ description = """VPF stands for Video Processing Framework. It’s a set of C++ 
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
 classifiers = [
-    "Environment :: GPU :: NVIDIA CUDA :: 12.3",
+    "Environment :: GPU :: NVIDIA CUDA :: 12.1",
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
@@ -33,7 +33,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-samples = ['pycuda', 'pyopengl', 'opencv-python', 'onnx', 'tensorrt', 'tqdm', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.0+cu123#subdirectory=src/PytorchNvCodec/']
-tests = ['pycuda', 'pyopengl', 'opencv-python', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.0+cu123#subdirectory=src/PytorchNvCodec/']
-torch = ['PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.0+cu123#subdirectory=src/PytorchNvCodec/']
-tensorrt = ['onnx', 'tensorrt', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.0+cu123#subdirectory=src/PytorchNvCodec/']
+samples = ['pycuda', 'pyopengl', 'opencv-python', 'onnx', 'tensorrt', 'tqdm', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.2+cu121#subdirectory=src/PytorchNvCodec/']
+tests = ['pycuda', 'pyopengl', 'opencv-python', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.2+cu121#subdirectory=src/PytorchNvCodec/']
+torch = ['PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.2+cu121#subdirectory=src/PytorchNvCodec/']
+tensorrt = ['onnx', 'tensorrt', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.2.2+cu121#subdirectory=src/PytorchNvCodec/']

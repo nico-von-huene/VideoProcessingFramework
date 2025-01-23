@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.3.2-devel-ubuntu22.04
+FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
 
 ENV NVIDIA_DRIVER_CAPABILITIES=compute,video
 
@@ -28,6 +28,7 @@ COPY src src
 COPY PytorchNvCodec PytorchNvCodec
 COPY setup.py setup.py
 COPY pyproject.toml pyproject.toml
+RUN python3 -m pip install torch==2.2.2 torchvision==0.17.2 --index-url https://download.pytorch.org/whl/cu121
 RUN python3 -m pip install -v --no-cache-dir .
 RUN python3 -c "import PytorchNvCodec"
 

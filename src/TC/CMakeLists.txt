@@ -34,7 +34,7 @@ project(TC LANGUAGES CXX CUDA VERSION 2.0.0)
 
 add_subdirectory(TC_CORE)
 
-find_package(CUDAToolkit 12.3 REQUIRED)
+find_package(CUDAToolkit 12.1 REQUIRED)
 include(GenerateExportHeader)
 
 add_library(
