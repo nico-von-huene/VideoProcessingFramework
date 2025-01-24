@@ -2,7 +2,7 @@
 requires = [
   "setuptools >=42,<72",
   "scikit-build",
-  "numpy==1.26.3",
+  "numpy==1.24.4",
   ## out-comment not install cmake/ninja via pip
   "cmake>=3.21",
   "ninja; platform_system!='Windows'",
@@ -29,7 +29,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-  "numpy==1.26.3",
+  "numpy==1.24.4",
 ]
 
 [project.optional-dependencies]
