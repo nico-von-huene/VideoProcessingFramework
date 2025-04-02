@@ -1,5 +1,30 @@
 [build-system]        
 requires = [
-  "setuptools>=42",
-  "torch"
+  "setuptools>=42,<70",
+  "torch>1.10,<1.12",
+  "scikit-build",
+  "numpy==1.22.4",
+  ## out-comment not install cmake/ninja via pip
+  "cmake>=3.21",
+  "ninja; platform_system!='Windows'",
+  "pkgconfig",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PytorchNvCodec"
+version = "2.0.0"
+authors = [{name = "NVIDIA"},]
+description = """VPF stands for Video Processing Framework. It’s set of C++ libraries and Python bindings which provides full HW acceleration for video processing tasks such as decoding, encoding, transcoding and GPU-accelerated color space and pixel format conversions.
+
+VPF also supports exporting GPU memory objects such as decoded video frames to PyTorch tensors without Host to Device copies."""
+requires-python = ">=3.7"
+license = {file = "LICENSE"}
+classifiers = [
+    "Environment :: GPU :: NVIDIA CUDA :: 11.5",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+  "torch>1.10,<1.12",
+  "numpy==1.22.4",
 ]

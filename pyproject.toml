@@ -1,11 +1,12 @@
 [build-system]        
 requires = [
-  "setuptools>=42",
+  "setuptools>=42,<70",
   "scikit-build",
-  "numpy",
+  "numpy==1.22.4",
   ## out-comment not install cmake/ninja via pip
   "cmake>=3.21",
-  "ninja; platform_system!='Windows'"
+  "ninja; platform_system!='Windows'",
+  "pkgconfig",
 ]
 build-backend = "setuptools.build_meta"
 
@@ -15,3 +16,26 @@ addopts = "-ra -q"
 testpaths = [
     "tests",
 ]
+
+[project]
+name = "PyNvCodec"
+version = "2.0.0"
+authors = [{name = "NVIDIA"},]
+description = """VPF stands for Video Processing Framework. It’s a set of C++ libraries and Python bindings which provides full HW acceleration for video processing tasks such as decoding, encoding, transcoding and GPU-accelerated color space and pixel format conversions.
+
+VPF also supports exporting GPU memory objects such as decoded video frames to PyTorch tensors without Host to Device copies."""
+requires-python = ">=3.7"
+license = {file = "LICENSE"}
+classifiers = [
+    "Environment :: GPU :: NVIDIA CUDA :: 11.5",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+  "numpy==1.22.4",
+]
+
+[project.optional-dependencies]
+samples = ['pycuda', 'pyopengl', 'torch<1.12,>1.10', 'torchvision<0.13,>0.11', 'opencv-python', 'onnx', 'tensorrt', 'tqdm', 'PytorchNvCodec@ git+https://github.com/kinexon-cv/VideoProcessingFramework.git@torch1.11.0+cu115#subdirectory=src/PytorchNvCodec/']
+tests = ['pycuda', 'pyopengl', 'torch<1.12,>1.10', 'torchvision<0.13,>0.11', 'opencv-python', 'PytorchNvCodec@ git+https://github.com/kinexon-cv/VideoProcessingFramework.git@torch1.11.0+cu115#subdirectory=src/PytorchNvCodec/']
+torch = ['torch<1.12,>1.10', 'torchvision<0.13,>0.10', 'PytorchNvCodec@ git+https://github.com/kinexon-cv/VideoProcessingFramework.git@torch1.11.0+cu115#subdirectory=src/PytorchNvCodec/']
+tensorrt = ['torch<1.12,>1.10', 'torchvision<0.13,>0.10', 'PytorchNvCodec@ git+https://github.com/kinexon-cv/VideoProcessingFramework.git@torch1.11.0+cu115#subdirectory=src/PytorchNvCodec/']
