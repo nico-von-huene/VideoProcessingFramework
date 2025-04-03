@@ -4,7 +4,7 @@ requires = [
   "scikit-build",
   "numpy==1.22.4",
   ## out-comment not install cmake/ninja via pip
-  "cmake>=3.21",
+  "cmake>=3.21,4.0",
   "ninja; platform_system!='Windows'",
   "pkgconfig",
 ]
