@@ -28,7 +28,7 @@ COPY src src
 COPY PytorchNvCodec PytorchNvCodec
 COPY setup.py setup.py
 COPY pyproject.toml pyproject.toml
-RUN python3 -m pip install torch==2.2.2 torchvision==0.17.2 --index-url https://download.pytorch.org/whl/cu121
+RUN python3 -m pip install torch==2.6.0+cu124 torchvision==0.21.0+cu124 --index-url https://download.pytorch.org/whl/cu124
 RUN python3 -m pip install -v --no-cache-dir .
 RUN python3 -c "import PytorchNvCodec"
 
