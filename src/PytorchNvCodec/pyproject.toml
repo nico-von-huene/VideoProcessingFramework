@@ -5,7 +5,7 @@ requires = [
   "torchvision==0.21.0+cu124",
   "numpy==1.24.4",
   ## out-comment not install cmake/ninja via pip
-  "cmake>=3.21",
+  "cmake>=3.21,<4.0",
   "ninja; platform_system!='Windows'",
   "pkgconfig",
   "scikit-build>=0.13",

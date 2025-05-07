@@ -30,5 +30,8 @@ generate-stubs:
 	
 .PHONY: run_tests generate-stubs
 
+docker:
+	DOCKER_BUILDKIT=0 docker build --shm-size=9.50gb --network=host -f docker/Dockerfile .
+
 # vim:ft=make
 #

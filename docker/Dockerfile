@@ -12,7 +12,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive \
     wget \
     build-essential \
     ninja-build \
-    cmake \
     git \
     python3 \
     python3-pip \
