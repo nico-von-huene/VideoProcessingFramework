@@ -33,5 +33,8 @@ generate-stubs:
 docker:
 	DOCKER_BUILDKIT=0 docker build --shm-size=9.50gb --network=host -f docker/Dockerfile .
 
+docker-torch:
+	DOCKER_BUILDKIT=0 docker build --shm-size=9.50gb --network=host -f docker/Dockerfile  --build-arg PIP_INSTALL_EXTRAS="torch" .
+
 # vim:ft=make
 #

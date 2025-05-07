@@ -42,11 +42,9 @@ if os.name == "nt":
 
 import PyNvCodec as nvc
 import numpy as np
-import torch
 
 
 def decode(gpuID, encFilePath, decFilePath):
-    assert torch.cuda.is_available()
     decFile = open(decFilePath, "wb")
 
     nvDmx = nvc.PyFFmpegDemuxer(encFilePath)
