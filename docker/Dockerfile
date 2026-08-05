@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04 AS base
+FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu22.04 AS base
 
 ENV NVIDIA_DRIVER_CAPABILITIES=compute,video
 
@@ -29,9 +29,9 @@ COPY CMakeLists.txt CMakeLists.txt
 RUN python3 -m venv venv
 RUN venv/bin/python -m pip install --no-cache-dir setuptools wheel
 RUN if [ -z "${PIP_INSTALL_EXTRAS}" ]; then \
-       	venv/bin/python -m pip install -v --no-cache-dir . --extra-index-url https://download.pytorch.org/whl/cu124; \
+       	venv/bin/python -m pip install -v --no-cache-dir . --extra-index-url https://download.pytorch.org/whl/cu128; \
     else \
-       	venv/bin/python -m pip install -v --no-cache-dir .[$PIP_INSTALL_EXTRAS] --extra-index-url https://download.pytorch.org/whl/cu124; \
+       	venv/bin/python -m pip install -v --no-cache-dir .[$PIP_INSTALL_EXTRAS] --extra-index-url https://download.pytorch.org/whl/cu128; \
     fi
 RUN venv/bin/python -c "import PyNvCodec"
 SHELL ["/bin/bash", "-c"]
@@ -62,7 +62,7 @@ FROM base AS wheel
 
 ARG PIP_INSTALL_EXTRAS=""
 RUN if [ -z "${PIP_INSTALL_EXTRAS}" ]; then \
-        /src/venv/bin/python -m pip wheel -v --no-cache-dir . --extra-index-url https://download.pytorch.org/whl/cu124; \
+        /src/venv/bin/python -m pip wheel -v --no-cache-dir . --extra-index-url https://download.pytorch.org/whl/cu128; \
     else \
-        /src/venv/bin/python -m pip wheel -v --no-cache-dir .[$PIP_INSTALL_EXTRAS] --extra-index-url https://download.pytorch.org/whl/cu124; \
+        /src/venv/bin/python -m pip wheel -v --no-cache-dir .[$PIP_INSTALL_EXTRAS] --extra-index-url https://download.pytorch.org/whl/cu128; \
     fi
