@@ -19,6 +19,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive \
     python3-venv
 
 ARG PIP_INSTALL_EXTRAS=""
+# CUDA driver libs (libcuda.so.1) are only available at runtime via nvidia-container-toolkit.
+# Symlink the toolkit stub so imports can resolve during the image build.
+RUN ln -sf /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1
 # Build vpf
 RUN mkdir /src
 WORKDIR /src
@@ -33,10 +36,13 @@ RUN if [ -z "${PIP_INSTALL_EXTRAS}" ]; then \
     else \
        	venv/bin/python -m pip install -v --no-cache-dir .[$PIP_INSTALL_EXTRAS] --extra-index-url https://download.pytorch.org/whl/cu128; \
     fi
-RUN venv/bin/python -c "import PyNvCodec"
+# Prefer CUDA stubs only for this smoke import; do not bake them into the image LD_LIBRARY_PATH.
+RUN LD_LIBRARY_PATH=/usr/local/cuda/lib64/stubs${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}} \
+	venv/bin/python -c "import PyNvCodec"
 SHELL ["/bin/bash", "-c"]
 RUN if [[ "${PIP_INSTALL_EXTRAS}" = *"torch"* ]]; then \
-		venv/bin/python -c "import PytorchNvCodec"; \
+		LD_LIBRARY_PATH=/usr/local/cuda/lib64/stubs${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}} \
+			venv/bin/python -c "import PytorchNvCodec"; \
 		venv/bin/python -c "import torch; assert torch.cuda.is_available()"; \
 	fi
 
@@ -47,11 +53,11 @@ ARG PIP_INSTALL_EXTRAS=""
 RUN mkdir /cwd
 WORKDIR /cwd
 COPY samples samples
-RUN /src/venv/bin/python samples/SampleDemuxDecode2.py 0 "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" test.yuv
+RUN /src/venv/bin/python samples/SampleDemuxDecode2.py 0 "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4" test.yuv
 SHELL ["/bin/bash", "-c"]
 RUN if [[ "${PIP_INSTALL_EXTRAS}" = *"torch"* ]]; then \
 		echo "Running PyTorch sample"; \
-		/src/venv/bin/python samples/SamplePyTorch.py 0 "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" test.mp4; \
+		/src/venv/bin/python samples/SamplePyTorch.py 0 "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4" test.mp4; \
     fi
 
 ENTRYPOINT ["/bin/bash"]
