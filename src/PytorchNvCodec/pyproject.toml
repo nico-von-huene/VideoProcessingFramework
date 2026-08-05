@@ -25,5 +25,5 @@ classifiers = [
 dependencies = [
   "torch==2.7.0+cu128",
   "torchvision==0.22.0+cu128",
-  "numpy==1.246.4",
+  "numpy==1.26.4",
 ]
