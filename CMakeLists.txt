@@ -19,4 +19,6 @@ cmake_minimum_required(VERSION 3.21)
 project(PyNvCodec VERSION 2.0.0)
 
 set(CMAKE_CXX_STANDARD 17)
+include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/VPFCudaCompat.cmake")
+vpf_apply_cuda_compat()
 add_subdirectory(src)

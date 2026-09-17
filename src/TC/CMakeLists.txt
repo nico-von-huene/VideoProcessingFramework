@@ -30,7 +30,12 @@ if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
     )
 endif()
 
-project(TC LANGUAGES CXX CUDA VERSION 2.0.0)
+# Identify the host compiler first so vpf_apply_cuda_compat can pick a
+# CUDA-supported gcc when the default is GCC 15+.
+project(TC LANGUAGES C CXX VERSION 2.0.0)
+include("${CMAKE_CURRENT_SOURCE_DIR}/../../cmake/VPFCudaCompat.cmake")
+vpf_apply_cuda_compat()
+enable_language(CUDA)
 
 add_subdirectory(TC_CORE)
 

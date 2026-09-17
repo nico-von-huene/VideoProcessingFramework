@@ -27,3 +27,30 @@ dependencies = [
   "torchvision==0.22.0+cu128",
   "numpy==1.26.4",
 ]
+
+# +cu128 wheels are not on PyPI. Isolated Poetry/pip builds of this package
+# look up torch/torchvision here instead of the retired pypi.ngc.nvidia.com host.
+[[tool.poetry.source]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+priority = "supplemental"
+
+[[tool.poetry.source]]
+name = "pypi-nvidia"
+url = "https://pypi.nvidia.com"
+priority = "supplemental"
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+torch = {version = "2.7.0+cu128", source = "pytorch-cu128"}
+torchvision = {version = "0.22.0+cu128", source = "pytorch-cu128"}
+numpy = "1.26.4"
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }

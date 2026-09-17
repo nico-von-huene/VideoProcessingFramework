@@ -37,3 +37,23 @@ samples = ['pycuda', 'pyopengl', 'opencv-python', 'onnx', 'tensorrt', 'tqdm', 'P
 tests = ['pycuda', 'pyopengl', 'opencv-python', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.7.0+cu128#subdirectory=src/PytorchNvCodec/']
 torch = ['PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.7.0+cu128#subdirectory=src/PytorchNvCodec/']
 tensorrt = ['onnx', 'tensorrt', 'PytorchNvCodec@ git+https://github.com/nico-von-huene/VideoProcessingFramework.git@torch2.7.0+cu128#subdirectory=src/PytorchNvCodec/']
+
+# +cu128 wheels are not on PyPI. Poetry/pip isolated builds must see this index.
+[[tool.poetry.source]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+priority = "supplemental"
+
+[[tool.poetry.source]]
+name = "pypi-nvidia"
+url = "https://pypi.nvidia.com"
+priority = "supplemental"
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }

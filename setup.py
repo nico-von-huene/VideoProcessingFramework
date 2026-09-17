@@ -20,7 +20,8 @@ if __name__ == "__main__":
             "tensorrt": ["onnx", "tensorrt", PytorchNvCodec],
         },
         dependency_links=[
-            "https://pypi.ngc.nvidia.com"
+            "https://download.pytorch.org/whl/cu128",
+            "https://pypi.nvidia.com",
         ],
         packages=["PyNvCodec"],
         package_data={"PyNvCodec": ["__init__.pyi"]},
