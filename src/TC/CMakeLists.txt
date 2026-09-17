@@ -16,25 +16,15 @@
 
 cmake_minimum_required(VERSION 3.21)
 
-# This must be set before enabling CUDA. Otherwise it will be set to the default ARCH by nvcc (e.g. 52 by nvcc 11.7)
-if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
-    # Define Volta / Turing / Ampere / Ada if not set by the user
-    set(CMAKE_CUDA_ARCHITECTURES
-        60
-        70
-        72
-        75
-        80
-        86
-        89 # Require CUDA 11.8 for CC 89 or cmake 3.23 for CMAKE_CUDA_ARCHITECTURES_{ALL,ALL_MAJOR}
-    )
-endif()
-
 # Identify the host compiler first so vpf_apply_cuda_compat can pick a
 # CUDA-supported gcc when the default is GCC 15+.
 project(TC LANGUAGES C CXX VERSION 2.0.0)
 include("${CMAKE_CURRENT_SOURCE_DIR}/../../cmake/VPFCudaCompat.cmake")
 vpf_apply_cuda_compat()
+# Before enable_language(CUDA): nvcc 11.7+ defaults to sm_52 if this is unset.
+# Do not hardcode sm_60; CUDA 13 rejects it. Override with
+# -DCMAKE_CUDA_ARCHITECTURES=native to build only for the GPU on this machine.
+vpf_set_default_cuda_architectures()
 enable_language(CUDA)
 
 add_subdirectory(TC_CORE)
